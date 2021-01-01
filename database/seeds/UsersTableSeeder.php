@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         User::truncate();
         // factory(User::class, 8)->create();
     
-        DB::table('courses')->insert([
+        DB::table('users')->insert([
             [
                 'name' => "Dannie Schoen",
                 'email' => "DannieS@example.net",
