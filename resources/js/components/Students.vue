@@ -7,7 +7,7 @@
           <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Courses</th>
-          <th scope="col">Operations</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -16,7 +16,7 @@
           <th scope="row">{{index + 1}}</th>
           <td>{{student.name}}</td>
           <td>{{student.email}}</td>
-          <td>0</td>
+          <td>{{student.courses.length}}</td>
           <td>
               <router-link :to="{path: `/students/${student.id}`}"><button class="btn btn-secondary">View</button></router-link>
           </td>

@@ -15,7 +15,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = User::where('is_admin', false)->get();
+        $students = User::with('courses')->where('is_admin', false)->get();
         return response()->json(['students'=> $students], 200);
     }
 
@@ -38,9 +38,13 @@ class StudentsController extends Controller
      */
     public function show($std)
     {
-        $student = User::with('courses')->find($std);
-        $courses = $student->courses()->pluck('id');
-        return response()->json(compact('student', 'courses'), 200);
+        $details = User::with('courses')->find($std);
+        $courses = $details->courses()->pluck('id');
+        $credits = $details->courses()->pluck('units')->sum();
+        // $credits = $student->courses()->sum(function ($course) {
+        //     return $course->sum('units');
+        // });
+        return response()->json(compact('details', 'courses', 'credits'), 200);
     }
 
     /**

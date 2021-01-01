@@ -8,10 +8,13 @@ const store = new Vuex.Store({
         token: null,
         user: null,
         students: [],
-        student: {},
         courses: {},
         dashboard_stats: {},
-        std_courses: []
+        student : {
+           details : {},
+           courses: [],
+           credits: 0
+        }
     },
     getters: {
         getAuthUser(state){
@@ -20,17 +23,14 @@ const store = new Vuex.Store({
         getStudents(state){
             return state.students
         },
-        getStudent(state){
-            return state.student
-        },
         getCourses(state){
             return state.courses
         },
         getDashboardStats(state){
             return state.dashboard_stats
         },
-        getStdCourses(state){
-            return state.std_courses
+        getStudent(state){
+            return state.student
         }
     },
     mutations: {
@@ -43,18 +43,15 @@ const store = new Vuex.Store({
         SET_STUDENTS(state, students){
             state.students = students
         },
-        SET_SINGLE_STUDENT(state, student){
-            state.student = student
-        },
         SET_COURSES(state, courses){
             state.courses = courses
         },
         SET_DASHBOARD_STATS(state, stats){
             state.dashboard_stats = stats
         },
-        SET_SINGLE_STUDENT_COURSES(state, courses){
-            state.std_courses = courses
-        }
+        SET_SINGLE_STUDENT(state, student){
+            state.student = student
+        },
     },
     actions: {
         async registerUser({dispatch},formData){
@@ -111,9 +108,10 @@ const store = new Vuex.Store({
         async fetchStudent({commit}, student_id){
             try{
                 const response = await axios.get(`/api/admin/students/${student_id}`)
-                console.log('fetch_std', response.data.courses)
-                commit('SET_SINGLE_STUDENT', response.data.student)
-                commit('SET_SINGLE_STUDENT_COURSES', response.data.courses)
+                console.log('fetch_std', response.data)
+                commit('SET_SINGLE_STUDENT', response.data)
+                // commit('SET_SINGLE_STUDENT', response.data.student)
+                // commit('SET_SINGLE_STUDENT_COURSES', response.data.courses)
                 return response
             }catch(e){
                 return e.response

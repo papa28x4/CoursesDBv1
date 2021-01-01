@@ -35,10 +35,16 @@
 					:mask-closable="false"
 					:closable="true"
 				>
-					<input v-model="data.code"  placeholder="Enter course code" style="width: 300px; text-align:center" type="text">
-                    <input v-model="data.title" placeholder="Enter course title" style="width: 300px; text-align:center" type="text">
-                    <input v-model="data.units" placeholder="Enter course units" style="width: 300px; text-align:center" type="number">
+					<div class="space mb-2">
+						<Input v-model="data.code"  placeholder="Enter course code" style="width: 300px; text-align:center" type="text" />
+					</div>
+					<div class="space mb-2">
+                    	<Input v-model="data.title" placeholder="Enter course title" style="width: 300px; text-align:center" type="text" />
+					</div>
 
+					<div class="space">
+                    	<Input v-model="data.units" placeholder="Enter course units" style="width: 300px; text-align:center" type="number" />
+					</div>
 
 					<div slot="footer">
 						<Button type="default" @click="addModal=false">Close</Button>
@@ -58,12 +64,17 @@
 					:mask-closable="false"
 					:closable="true"
 				>
-					<input v-model="editData.code" placeholder="Enter course code" style="width: 300px; text-align:center" type="text">
-                    <input v-model="editData.title" placeholder="Enter course title" style="width: 300px; text-align:center" type="text">
-                    <input v-model="editData.units" placeholder="Enter course units" style="width: 300px; text-align:center" type="number">
-
-
-
+					
+					<div class="space mb-2">
+                    	<Input v-model="editData.code" placeholder="Enter course code" style="width: 300px; text-align:center" type="text" />
+					</div>
+					<div class="space mb-2">
+						<Input v-model="editData.title" placeholder="Enter course title" style="width: 300px; text-align:center" type="text" />
+					</div>
+					<div class="space">
+						  <Input v-model="editData.units" placeholder="Enter course units" style="width: 300px; text-align:center" type="number" />
+					</div>
+                    
 					<div slot="footer">
 						<Button type="default" @click="editModal=false">Close</Button>
 						<Button type="primary" 
@@ -108,13 +119,13 @@ export default {
             	data: {
                     code: '',
                     title: '',
-                    units: 1
+                    units: ''
 			},
 			editData: {
 				id: '',
 				code: '',
                 title: '',
-                units: 1
+                units: ''
 			},
 			deleteData: {
 				id: '',
@@ -191,6 +202,7 @@ export default {
 			// 	this.swr();
 			// 	this.isDeleting = false;
 			// }
+			this.deleteModal=false
 		},
 		showEditModal(course){
 			for(let key in course){
@@ -210,6 +222,7 @@ export default {
 </script>
 
 <style scoped>
+  
   .courses{
     margin: auto;
     margin-top: 24px;

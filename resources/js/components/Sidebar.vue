@@ -72,7 +72,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Logout</a>
+                 <a @click.prevent="logout" href="#">Logout</a>
             </li>
         </ul>
 
@@ -89,6 +89,11 @@ export default {
        ...mapGetters([
            'getAuthUser'
        ])
+   },
+   methods: {
+       logout(){
+           this.$emit('logout')
+       }
    },
    mounted(){
        

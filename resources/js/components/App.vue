@@ -2,7 +2,7 @@
     <div>
        
         <div class="wrapper">
-            <Sidebar v-if="loggedIn"/>
+            <Sidebar @logout="logoutHandler" v-if="loggedIn"/>
             <div :class="`${loggedIn ? 'content' : 'content loggedIn'}`">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <router-link v-if="!loggedIn" class="navbar-brand" :to="{name: 'home'}">Home</router-link>
@@ -116,6 +116,11 @@ export default {
         margin-left: 250px;
         transition: all 0.3s;
         flex: 1;
+    }
+    @media (max-width: 768px) {
+        .content{
+            margin: 0
+        }
     }
     .content.active{
         margin-left: 0px;
