@@ -33,7 +33,7 @@
                
             </div>
             <ul class="list-group list-group-flush">
-              <li v-for="course in getStudent.details.courses" :key="course.id" class="list-group-item">{{course.title}}</li>
+              <li v-for="course in getStudent.details.courses" :key="course.id" class="list-group-item">{{course.title}} <span style="color:#2b85e4">({{course.units}})</span></li>
             </ul>   
         </div>
       </div>
@@ -46,7 +46,7 @@
 				>
   
           <Select  v-model="data.courses" filterable multiple placeholder="Select course">
-            <Option v-for="course in courses" :key="course.id" :value="course.id">{{course.title}} ({{course.units}})</span></Option>
+            <Option v-for="course in courses" :key="course.id" :value="course.id">{{course.title}} ({{course.units}})</Option>
           </Select>
           <div class="space"></div>
 

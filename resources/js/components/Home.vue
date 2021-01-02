@@ -1,6 +1,6 @@
 <template>
-  <div class="container text-center pt-5">
-    <h1>This is Vue World</h1>
+  <div class="home container text-center pt-5">
+    <h1>Welcome To CoursesDB</h1>
   </div>
 </template>
 
@@ -10,6 +10,18 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+  .home{
+    height: calc(100vh - 56px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .home h1{
+    margin-top: -80px;
+    color: #fff;
+    font-size: 56px;
+    font-family: 'Courgette', cursive;
+  }
 </style>
