@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::apiResource('/students', 'StudentsController');
     Route::apiResource('/courses', 'CoursesController');
     Route::get('/course-list', 'SingleStudentController@indexCourses');
-    // Route::put('/course-list/{student}', 'SingleStudentController@getCourses');
-    Route::put('/course-list/{std}', 'SingleStudentController@updateCourses');
+    Route::put('/course-list/{student}', 'SingleStudentController@updateCourses');
 });
+
+//res.status(200).json({status: 'Success', message: 'List of users', data: users})

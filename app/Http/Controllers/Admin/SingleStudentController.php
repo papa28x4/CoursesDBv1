@@ -16,8 +16,8 @@ class SingleStudentController extends Controller
         return response()->json(['courses' => $courses], 200);
     }
 
-    public function updateCourses(Request $request, User $std){
-        $status = $std->courses()->sync($request->courses);
+    public function updateCourses(Request $request, User $student){
+        $status = $student->courses()->sync($request->courses);
         return $status;
     }
 }
