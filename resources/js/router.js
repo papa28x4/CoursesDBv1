@@ -15,44 +15,54 @@ const routes = [
     {
         path: '/',
         component: Home,
-        name: 'home'
+        name: 'home',
+        meta: { title: 'Home' }
     },
     {
         path: '/login',
         component: Login,
-        name: 'login'
+        name: 'login',
+        meta: { title: 'Login' }
     },
     {
         path: '/register',
         component: Register,
-        name: 'register'
+        name: 'register',
+        meta: { title: 'Register' }
     },
     {
         path: '/dashboard',
         component: Dashboard,
-        name: 'dashboard'
+        name: 'dashboard',
+        meta: { title: 'Dashboard' }
     },
     {
         path: '/students',
         component: Students,
-        name: 'students'
+        name: 'students',
+        meta: { title: 'Students' }
     },
     {
         path: '/courses',
         component: Courses,
-        name: 'courses'
+        name: 'courses',
+        meta: { title: 'Courses' }
     },
     {
         path: '/students/:id',
         component: Student,
-        name: 'student'
+        name: 'student',
+        meta: { title: 'Student' }
     },
     {
         path: '*',
         component: NotFound,
-        name: '404'
+        name: '404',
+        meta: { title: '404' }
     }
 ];
+
+
 
 export default new Router({
     routes,

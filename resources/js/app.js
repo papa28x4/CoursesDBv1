@@ -15,6 +15,11 @@ import 'view-design/dist/styles/iview.css';
 
 Vue.use(ViewUI);
 Vue.mixin(common);
+router.beforeEach((to, from, next) => {
+    document.title = 'CoursesDB | ' + to.meta.title
+
+    next()
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

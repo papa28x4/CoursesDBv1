@@ -2079,6 +2079,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
+    console.log('I got here');
     var exclude = ['login', 'home', 'register'];
 
     if (localStorage.getItem('coursesDB.token') === null && !exclude.includes(this.$route.name)) {
@@ -2088,6 +2089,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var externalScript = document.createElement('script');
     externalScript.setAttribute('src', '/js/scrollbar.js');
     document.head.appendChild(externalScript);
+    console.log('pppp', document.querySelector('title'));
   }
 });
 
@@ -105387,6 +105389,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.use(view_design__WEBPACK_IMPORTED_MODULE_3___default.a);
 Vue.mixin(_common__WEBPACK_IMPORTED_MODULE_2__["default"]);
+_router__WEBPACK_IMPORTED_MODULE_0__["default"].beforeEach(function (to, from, next) {
+  document.title = 'CoursesDB | ' + to.meta.title;
+  next();
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -106436,35 +106442,59 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var routes = [{
   path: '/',
   component: _components_Home__WEBPACK_IMPORTED_MODULE_2__["default"],
-  name: 'home'
+  name: 'home',
+  meta: {
+    title: 'Home'
+  }
 }, {
   path: '/login',
   component: _components_Login__WEBPACK_IMPORTED_MODULE_3__["default"],
-  name: 'login'
+  name: 'login',
+  meta: {
+    title: 'Login'
+  }
 }, {
   path: '/register',
   component: _components_Register__WEBPACK_IMPORTED_MODULE_4__["default"],
-  name: 'register'
+  name: 'register',
+  meta: {
+    title: 'Register'
+  }
 }, {
   path: '/dashboard',
   component: _components_Dashboard__WEBPACK_IMPORTED_MODULE_5__["default"],
-  name: 'dashboard'
+  name: 'dashboard',
+  meta: {
+    title: 'Dashboard'
+  }
 }, {
   path: '/students',
   component: _components_Students__WEBPACK_IMPORTED_MODULE_7__["default"],
-  name: 'students'
+  name: 'students',
+  meta: {
+    title: 'Students'
+  }
 }, {
   path: '/courses',
   component: _components_Courses__WEBPACK_IMPORTED_MODULE_8__["default"],
-  name: 'courses'
+  name: 'courses',
+  meta: {
+    title: 'Courses'
+  }
 }, {
   path: '/students/:id',
   component: _components_Student__WEBPACK_IMPORTED_MODULE_6__["default"],
-  name: 'student'
+  name: 'student',
+  meta: {
+    title: 'Student'
+  }
 }, {
   path: '*',
   component: _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
-  name: '404'
+  name: '404',
+  meta: {
+    title: '404'
+  }
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
