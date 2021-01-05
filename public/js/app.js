@@ -2079,7 +2079,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
-    console.log('I got here');
     var exclude = ['login', 'home', 'register'];
 
     if (localStorage.getItem('coursesDB.token') === null && !exclude.includes(this.$route.name)) {
@@ -2089,7 +2088,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var externalScript = document.createElement('script');
     externalScript.setAttribute('src', '/js/scrollbar.js');
     document.head.appendChild(externalScript);
-    console.log('pppp', document.querySelector('title'));
   }
 });
 

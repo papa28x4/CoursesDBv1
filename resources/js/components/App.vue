@@ -135,7 +135,6 @@ export default {
         }
     },
     mounted(){
-       console.log('I got here')
        let exclude = ['login', 'home', 'register']
        if(localStorage.getItem('coursesDB.token') === null && !exclude.includes(this.$route.name)){
             this.$router.replace('/login')
@@ -143,7 +142,6 @@ export default {
         let externalScript = document.createElement('script')
         externalScript.setAttribute('src', '/js/scrollbar.js')
         document.head.appendChild(externalScript)
-        console.log('pppp', document.querySelector('title'))
     }
 }
 </script>
