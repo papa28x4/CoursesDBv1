@@ -5,6 +5,10 @@
 Create an application for Admin in a University to manually choose courses for students.
 
 
+## ***Admin login***
+***email***: swissfair@yahoo.co.uk 
+***password***: secret
+
 ## **Built with**
 * Vue
 * BootStrap
@@ -25,9 +29,6 @@ Create an application for Admin in a University to manually choose courses for s
 * Add Dockerfile and Docker Compose
 * Unit tests to your code
 
-## ***admin login***
-email: swissfair@yahoo.co.uk 
-password: secret
 
 
 
