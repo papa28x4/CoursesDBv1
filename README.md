@@ -1,6 +1,6 @@
 
 
-# Simple Course Assignation App 
+# Simple Course Assignation App (WIP)
 
 Create an application for Admin in a University to manually choose courses for students.
 
@@ -25,7 +25,7 @@ Create an application for Admin in a University to manually choose courses for s
 * Add Dockerfile and Docker Compose
 * Unit tests to your code
 
-admin login
+## ***admin login***
 email: swissfair@yahoo.co.uk 
 password: secret
 
