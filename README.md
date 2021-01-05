@@ -1,8 +1,8 @@
 
 
-# Simple Udemy Clone
+# Simple Course Assignation App 
 
-Create a simple application for Admin in a University to manually choose courses for students.
+Create an application for Admin in a University to manually choose courses for students.
 
 
 ## **Built with**
@@ -14,11 +14,10 @@ Create a simple application for Admin in a University to manually choose courses
 
 ## **Base Case**
 
-* Return the list of students, optionally with pagination
 * Display the list of students
 * Upon click on the list item, display the selected courses for that specific student
 * Also, add the option to choose some courses for that student
-
+* Display the list of available courses, optionally with pagination
 
 ## **Stretch Case**
 
@@ -50,5 +49,4 @@ password: secret
 
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
