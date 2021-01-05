@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
+        // User::truncate();
         // factory(User::class, 8)->create();
     
         DB::table('users')->insert([
@@ -23,7 +23,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/6.jpg',
-                'department' => 'Accounting'
+                'department' => 'Accounting',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Orion Jacobs",
@@ -31,7 +33,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/1.jpg',
-                'department' => 'History'
+                'department' => 'History',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Nadia McCulloug",
@@ -39,7 +43,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/5.jpg',
-                'department' => 'Computer Science'
+                'department' => 'Computer Science',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Felipe VonRueden",
@@ -47,7 +53,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/2.jpg',
-                'department' => 'Electrical/Electronics'
+                'department' => 'Electrical/Electronics',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Lempi Goodwin",
@@ -55,7 +63,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/3.jpg',
-                'department' => 'Chemical Engineering'
+                'department' => 'Chemical Engineering',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Leone Jakubowski",
@@ -63,7 +73,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/7.jpg',
-                'department' => 'Mathematics'
+                'department' => 'Mathematics',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Stella Spencer",
@@ -71,7 +83,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/8.jpg',
-                'department' => 'Electrical/Electronics'
+                'department' => 'Electrical/Electronics',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Hudson Fahey",
@@ -79,7 +93,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => false,
                 'avatar' => '/images/users/4.jpg',
-                'department' => 'Accounting'
+                'department' => 'Accounting',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ],
             [
                 'name' => "Ekeoma",
@@ -87,7 +103,9 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'is_admin' => true,
                 'avatar' => '/images/users/9.jpg',
-                'department' => null
+                'department' => null,
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
             ]
         ]);
     }
