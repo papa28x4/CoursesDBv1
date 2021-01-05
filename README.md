@@ -27,7 +27,7 @@ Create an application for Admin in a University to manually choose courses for s
 
 * Authentication for the APIs
 * Add Dockerfile and Docker Compose
-* Unit tests to your code
+* Unit tests to for code
 
 
 
