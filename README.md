@@ -1,6 +1,6 @@
 
 
-# Simple Course Assignation App (WIP)
+# Simple Course Assignation App 
 
 Create an application for Admin in a University to manually choose courses for students.
 
@@ -23,7 +23,7 @@ Create an application for Admin in a University to manually choose courses for s
 * Also, add the option to choose some courses for that student
 * Display the list of available courses, optionally with pagination
 
-## **Stretch Case**
+## **Stretch Case** (WIP)
 
 * Authentication for the APIs
 * Add Dockerfile and Docker Compose
