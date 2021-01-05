@@ -10,7 +10,7 @@ Create an application for Admin in a University to manually choose courses for s
 ***password***: secret
 
 ## **Built with**
-* Vue
+* Vue & Vuex
 * BootStrap
 * Laravel
 
