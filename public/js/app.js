@@ -2548,7 +2548,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'login',
@@ -2565,7 +2564,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var res;
+        var res, key;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2580,7 +2579,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this.$emit('signedIn');
 
                   _this.$router.replace('/dashboard');
-                } else {}
+                } else if (res.status === 401) {
+                  _this.error(res.data.error);
+                } else if (res.status === 422) {
+                  for (key in res.data.error) {
+                    _this.error(res.data.error[key][0]);
+                  }
+                } else {
+                  _this.swr();
+                }
 
               case 4:
               case "end":
@@ -88015,9 +88022,7 @@ var render = function() {
                 _vm.$set(_vm.form, "email", $event.target.value)
               }
             }
-          }),
-          _vm._v(" "),
-          _c("small")
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [

@@ -17,6 +17,10 @@ class LoginController extends Controller
             'password' => 'required', 
         ]);
 
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 422);            
+        }
+
         try {
             if (! $token = Auth::attempt($validator->validated())) {
                 return response()->json(['error' => 'invalid_credentials'], 401);

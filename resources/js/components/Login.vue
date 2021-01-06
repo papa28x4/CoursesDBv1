@@ -5,7 +5,6 @@
             <div class="form-group">
               <label for="email">Email Address:</label>
               <input type="email" class="form-control" placeholder="Enter email" id="email" v-model="form.email">
-              <small></small>
             </div>
             <div class="form-group">
               <label for="pwd">Password:</label>
@@ -42,8 +41,14 @@ export default {
         if(res.status === 200){
           this.$emit('signedIn')
           this.$router.replace('/dashboard')
+        }else if(res.status === 401){
+          this.error(res.data.error)
+        }else if(res.status === 422){
+          for(let key in res.data.error){
+				    this.error(res.data.error[key][0])
+					}
         }else{
-
+           this.swr()
         }
       }
     }
