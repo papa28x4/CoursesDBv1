@@ -2369,19 +2369,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 3:
                 res = _context3.sent;
-                // const res = await this.callApi('delete', `/app/tags/${this.deleteData.id}`, null)
-                // if(res.status === 200){
-                // 	this.tags = this.tags.filter(el => el.id !== this.deleteData.id );
-                // 	this.isDeleting = false;
-                // 	this.deleteModal = false;
-                // 	this.success('Tag has been deleted')
-                // }else{
-                // 	this.swr();
-                // 	this.isDeleting = false;
-                // }
-                _this3.deleteModal = false;
 
-              case 5:
+                if (res.status === 200) {
+                  _this3.deleteModal = false;
+
+                  _this3.success('Course has been deleted');
+                } else {
+                  _this3.swr();
+                }
+
+                _this3.isDeleting = false;
+
+              case 6:
               case "end":
                 return _context3.stop();
             }

@@ -203,17 +203,13 @@ export default {
 		async remove(course){
 			this.isDeleting = true;
 			const res = await this.deleteCourse(this.deleteData.id)
-			// const res = await this.callApi('delete', `/app/tags/${this.deleteData.id}`, null)
-			// if(res.status === 200){
-			// 	this.tags = this.tags.filter(el => el.id !== this.deleteData.id );
-			// 	this.isDeleting = false;
-			// 	this.deleteModal = false;
-			// 	this.success('Tag has been deleted')
-			// }else{
-			// 	this.swr();
-			// 	this.isDeleting = false;
-			// }
-			this.deleteModal=false
+			if(res.status === 200){
+				this.deleteModal = false;
+				this.success('Course has been deleted')
+			}else{
+				this.swr();
+			}
+			this.isDeleting = false;
 		},
 		showEditModal(course){
 			for(let key in course){
