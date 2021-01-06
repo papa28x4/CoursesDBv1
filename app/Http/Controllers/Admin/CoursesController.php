@@ -32,9 +32,9 @@ class CoursesController extends Controller
     {
         // return $request->all();
         $validator = Validator::make($request->all(), [ 
-            'code' => 'required|size:6', 
+            'code' => 'required|size:6|regex:/[A-Z]{3}[0-9]{3}/|unique:courses', 
             'title' => 'required|min:2', 
-            'units' => 'required|numeric', 
+            'units' => 'required|integer|gte:1', 
         ]);
 
         if ($validator->fails()) { 
@@ -70,9 +70,9 @@ class CoursesController extends Controller
     public function update(Request $request, Course $course)
     {
         $validator = Validator::make($request->all(), [ 
-            'code' => 'required|size:6', 
+            'code' => "required|size:6|regex:/[A-Z]{3}[0-9]{3}/|unique:courses,code,$course->id", 
             'title' => 'required|min:2', 
-            'units' => 'required|numeric', 
+            'units' => 'required|integer|gte:1', 
         ]);
 
         if ($validator->fails()) { 

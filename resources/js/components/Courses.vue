@@ -26,7 +26,10 @@
       </tbody>
     </table>
     
-    <pagination :data="getCourses" @pagination-change-page="fetchCourses"></pagination>
+	<div class="pagination-cover d-flex justify-content-center">
+		 <pagination :data="getCourses" @pagination-change-page="fetchCourses"></pagination>
+	</div>
+   
     <!--Modals-->
     <!-- Tag adding Modal -->
 				<Modal
@@ -157,37 +160,45 @@ export default {
 			// 	return this.error('Tag name is required')
 			// }
 			const res = await this.addCourse(this.data)
-			// const res = await axios.post('api/admin/courses', this.data)
-			console.log('oooo', res)
-			// if(res.status === 201){
-			// 	this.tags.unshift(res.data)
-			// 	this.data.tagName = ''
-			// 	this.success('Tag has been added successfully')
-			// }else if(res.status === 422){
-			// 	this.error(res.data.errors.tagName[0])
-			// }else{
-			// 	this.swr()
-			// }
+			if(res.status === 200){
+				this.data = {
+                    code: '',
+                    title: '',
+                    units: ''
+				}
+				this.addModal = false;
+				this.success('Course has been added successfully')
+			}else if(res.status === 422){
+				for(let key in res.data.error){
+					if(res.data.error[key][0] == 'The code format is invalid.'){
+						this.error(res.data.error[key][0] + '\t Enter 3 Uppercase letters followed by 3 numbers')
+					}else{
+						this.error(res.data.error[key][0])
+					}
+				}
+			}else{
+				this.swr()
+			}
 			this.isAdding = false;
-			this.addModal = false;
 		},
 		async edit(){
 			this.isEditing = true;
 			const res = await this.updateCourse(this.editData)
-			// const res = await axios.put('api/admin/courses', this.data)
-			// if(res.status === 200){
-			// 	const index = this.getCoursesfindIndex(tag => tag.id === this.editData.id)
-			// 	this.tags.splice(index, 1, res.data)
-			// 	this.isEditing = false;
-			// 	this.editModal = false;
-			// 	// this.success('Tag has been updated successfully')
-			// }else if(res.status === 422){
-			// 	this.error(res.data.errors.tagName[0])
-			// }else{
-			// 	this.swr()
-			// }
+			if(res.status === 200){
+				this.editModal = false;
+				this.success('Course has been updated successfully')
+			}else if(res.status === 422){
+				for(let key in res.data.error){
+					if(res.data.error[key][0] == 'The code format is invalid.'){
+						this.error(res.data.error[key][0] + '\t Enter 3 Uppercase letters followed by 3 numbers')
+					}else{
+						this.error(res.data.error[key][0])
+					}
+				}
+			}else{
+				this.swr()
+			}
 			this.isEditing = false;
-			this.editModal = false;
 		},
 		async remove(course){
 			this.isDeleting = true;
@@ -221,7 +232,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
   
   .courses{
     margin: auto;
