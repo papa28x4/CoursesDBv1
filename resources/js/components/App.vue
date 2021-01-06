@@ -273,12 +273,14 @@ export default {
       text-align: center;
   }
   span.dropdown-item{
-      padding-left: 8px;
+      padding-left: 10px;
   }
   SVG{
   height: 30px;
 }
-
+.logout.nav-link{
+    padding-left: 10px
+}
 .st0{fill:url(#SVGID_1_);}
 .st1{fill:url(#SVGID_2_);}
 .st2{fill:url(#SVGID_3_);}

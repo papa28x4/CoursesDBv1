@@ -5,6 +5,7 @@
             <div class="form-group">
               <label for="email">Email Address:</label>
               <input type="email" class="form-control" placeholder="Enter email" id="email" v-model="form.email">
+              <small></small>
             </div>
             <div class="form-group">
               <label for="pwd">Password:</label>
