@@ -2033,6 +2033,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2046,7 +2050,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       background: "url('/images/landing.jpg')"
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['getAuthUser'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['getAuthUser', 'getNotifications'])),
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['signOut'])), {}, {
     logoutHandler: function logoutHandler() {
       var _this = this;
@@ -2416,7 +2420,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2472,10 +2484,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getDashboardStats'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchDashboardStats'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['getDashboardStats'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['fetchDashboardStats'])),
   created: function created() {
-    this.fetchDashboardStats();
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.fetchDashboardStats();
+
+            case 2:
+              console.log(_this.getDashboardStats);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   }
 });
 
@@ -2813,18 +2844,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'sidebar',
+  data: function data() {
+    return {
+      menus: [{
+        name: 'dashboard',
+        label: 'Dashboard'
+      }, {
+        name: 'students',
+        label: 'Students'
+      }, {
+        name: 'courses',
+        label: 'Courses'
+      }, {
+        name: 'security',
+        label: 'Security',
+        submenus: [{
+          name: 'roles',
+          label: 'Roles'
+        }, {
+          name: 'permissions',
+          label: 'Permissions'
+        }, {
+          name: 'assignations',
+          label: 'Assignations'
+        }]
+      }]
+    };
+  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAuthUser'])),
   methods: {
     logout: function logout() {
       this.$emit('logout');
     }
   },
-  mounted: function mounted() {}
+  created: function created() {
+    console.log('name', this.$route.name);
+  }
 });
 
 /***/ }),
@@ -7537,7 +7595,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.wrapper[data-v-332fccf4] {\n        display: flex;\n        width: 100%;\n        align-items: stretch;\n}\n.wrapper.logout[data-v-332fccf4]{\n        background: url('/images/landing.jpg');\n        background-size: cover;\n        height: 100vh;\n}\n.content[data-v-332fccf4]{\n        margin-left: 250px;\n        transition: all 0.3s;\n        flex: 1;\n}\n@media (max-width: 768px) {\n.content[data-v-332fccf4]{\n            margin: 0\n}\n}\n.content.active[data-v-332fccf4]{\n        margin-left: 0px;\n}\n.content.loggedIn[data-v-332fccf4]{\n        margin-left: 0px;\n}\n.dropdown-menu[data-v-332fccf4]{\n        right: 0;\n        left: auto;\n}\n.navbar-dark .navbar-nav .nav-link[data-v-332fccf4],\n    .navbar-dark .navbar-brand[data-v-332fccf4] {\n        color: rgba(255, 255, 255, 0.8);\n}\n.navbar-dark .navbar-nav .nav-link[data-v-332fccf4]:hover,\n    .navbar-dark .navbar-brand[data-v-332fccf4]:hover {\n        color: rgba(255, 255, 255, 1);\n}\n.navbar-dark .navbar-nav .nav-link.logout[data-v-332fccf4]{\n        color: #222;\n        cursor: pointer;\n}\n.navbar-dark .navbar-nav .nav-link.logout[data-v-332fccf4]:hover{\n        color: #222;\n}\n.navbar-nav[data-v-332fccf4] {\n       flex: 1;\n       justify-content: flex-end;\n}\n.dropdown-menu .nav-link[data-v-332fccf4]{\n        padding-left: 1.5rem;\n}\n.navbar-expand-lg .navbar-nav[data-v-332fccf4] {\n        align-items: center;\n}\n.avatar[data-v-332fccf4]{\n        width: 32px;\n        height: 32px;\n        border-radius: 50%;\n}\n#sidebarCollapse[data-v-332fccf4]:focus{\n        border: none;\n        box-shadow: none;\n}\n#sidebarCollapse svg[data-v-332fccf4],\n    .msg-link svg[data-v-332fccf4]{\n        fill: rgba(255, 255, 255, 0.8);\n}\n#sidebarCollapse svg[data-v-332fccf4]:hover,\n    .msg-link svg[data-v-332fccf4]:hover{\n        fill: rgba(255, 255, 255, 1);\n}\n.msg-link[data-v-332fccf4]{\n        position: relative;\n}\n.msg-link[data-v-332fccf4]:after{\n        content: 'You have unread notifications';\n        position: absolute;\n        background-color:#24292e;\n        font-size: 12px;\n        line-height: 18px;\n        width: 170px;\n        right: 0;\n        top: 140%;\n        padding: 4px;\n        border-radius: 6px;\n        text-align: center;\n        font-weight: 300;\n        color: #fff;\n        font-family: 'Segoe UI';\n        display: none;\n}\n.msg-link[data-v-332fccf4]:hover:after{\n        display: block;\n}\n#notification-ball[data-v-332fccf4]{\n        position: absolute;\n        top: 5px;\n        right: 5px;\n        z-index: 20;\n        width: 14px;\n        height: 14px;\n        color: #fff;\n        background-image: linear-gradient(#ff5457,#ed0096);\n        background-clip: padding-box;\n        border: 2px solid#343a40;\n        border-radius: 50%;\n}\n.page-item.active .page-link[data-v-332fccf4] {\n    background-color:#7386d5;\n    border-color: rgba(115, 134, 213, 1);\n}\n.page-item.active .page-link[data-v-332fccf4]:hover {\n    background-color:rgba(115, 134, 213, 0.8);\n    border-color: rgba(115, 134, 213, 0.8);\n}\n.pagination[data-v-332fccf4] {\n    margin-top: 30px;\n    justify-content: center;\n}\n.page-item.pagination-page-nav[data-v-332fccf4]{\n      width: 40px;\n      height: 40px;\n      text-align: center;\n}\nspan.dropdown-item[data-v-332fccf4]{\n      padding-left: 10px;\n}\nSVG[data-v-332fccf4]{\n  height: 30px;\n}\n.logout.nav-link[data-v-332fccf4]{\n    padding-left: 10px\n}\n.st0[data-v-332fccf4]{fill:url(#SVGID_1_);}\n.st1[data-v-332fccf4]{fill:url(#SVGID_2_);}\n.st2[data-v-332fccf4]{fill:url(#SVGID_3_);}\n.bg-dark.transparent[data-v-332fccf4]{\n    background-color: transparent !important;\n}\n", ""]);
+exports.push([module.i, "\n.wrapper[data-v-332fccf4] {\n        display: flex;\n        width: 100%;\n        align-items: stretch;\n}\n.wrapper.logout[data-v-332fccf4]{\n        background: url('/images/landing.jpg');\n        background-size: cover;\n        height: 100vh;\n}\n.content[data-v-332fccf4]{\n        margin-left: 250px;\n        transition: all 0.3s;\n        flex: 1;\n}\n@media (max-width: 768px) {\n.content[data-v-332fccf4]{\n            margin: 0\n}\n}\n.content.active[data-v-332fccf4]{\n        margin-left: 0px;\n}\n.content.loggedIn[data-v-332fccf4]{\n        margin-left: 0px;\n}\n.dropdown-menu[data-v-332fccf4]{\n        right: 0;\n        left: auto;\n}\n.navbar-dark .navbar-nav .nav-link[data-v-332fccf4],\n    .navbar-dark .navbar-brand[data-v-332fccf4] {\n        color: rgba(255, 255, 255, 0.8);\n}\n.navbar-dark .navbar-nav .nav-link[data-v-332fccf4]:hover,\n    .navbar-dark .navbar-brand[data-v-332fccf4]:hover {\n        color: rgba(255, 255, 255, 1);\n}\n.navbar-dark .navbar-nav .nav-link.logout[data-v-332fccf4]{\n        color: #222;\n        cursor: pointer;\n}\n.navbar-dark .navbar-nav .nav-link.logout[data-v-332fccf4]:hover{\n        color: #222;\n}\n.navbar-nav[data-v-332fccf4] {\n       flex: 1;\n       justify-content: flex-end;\n}\n.dropdown-menu .nav-link[data-v-332fccf4]{\n        padding-left: 1.5rem;\n}\n.navbar-expand-lg .navbar-nav[data-v-332fccf4] {\n        align-items: center;\n}\n.avatar[data-v-332fccf4]{\n        width: 32px;\n        height: 32px;\n        border-radius: 50%;\n}\n#sidebarCollapse[data-v-332fccf4]:focus{\n        border: none;\n        box-shadow: none;\n}\n#sidebarCollapse svg[data-v-332fccf4],\n    .msg-link svg[data-v-332fccf4]{\n        fill: rgba(255, 255, 255, 0.8);\n}\n#sidebarCollapse svg[data-v-332fccf4]:hover,\n    .msg-link svg[data-v-332fccf4]:hover{\n        fill: rgba(255, 255, 255, 1);\n}\n.msg-link[data-v-332fccf4]{\n        position: relative;\n}\n.msg-link.notify[data-v-332fccf4]:after{\n        content: attr(data-notify);\n        position: absolute;\n        background-color:#24292e;\n        font-size: 12px;\n        line-height: 18px;\n        width: 170px;\n        right: 0;\n        top: 122%;\n        padding: 4px;\n        border-radius: 6px;\n        text-align: center;\n        font-weight: 300;\n        color: #fff;\n        font-family: 'Segoe UI';\n        display: none;\n}\n.msg-link[data-v-332fccf4]:hover:after{\n        display: block;\n}\n#notification-ball[data-v-332fccf4]{\n        position: absolute;\n        top: 7px;\n        right: 4px;\n        z-index: 20;\n        width: 14px;\n        height: 14px;\n        color: #fff;\n        background-image: linear-gradient(#ff5457,#ed0096);\n        background-clip: padding-box;\n        border: 1px solid#343a40;\n        border-radius: 50%;\n        font-size: 10px;\n        text-align: center;\n        line-height: 12px;\n}\n.page-item.active .page-link[data-v-332fccf4] {\n    background-color:#7386d5;\n    border-color: rgba(115, 134, 213, 1);\n}\n.page-item.active .page-link[data-v-332fccf4]:hover {\n    background-color:rgba(115, 134, 213, 0.8);\n    border-color: rgba(115, 134, 213, 0.8);\n}\n.pagination[data-v-332fccf4] {\n    margin-top: 30px;\n    justify-content: center;\n}\n.page-item.pagination-page-nav[data-v-332fccf4]{\n      width: 40px;\n      height: 40px;\n      text-align: center;\n}\nspan.dropdown-item[data-v-332fccf4]{\n      padding-left: 10px;\n}\nSVG[data-v-332fccf4]{\n  height: 30px;\n}\n.logout.nav-link[data-v-332fccf4]{\n    padding-left: 10px\n}\n.st0[data-v-332fccf4]{fill:url(#SVGID_1_);}\n.st1[data-v-332fccf4]{fill:url(#SVGID_2_);}\n.st2[data-v-332fccf4]{fill:url(#SVGID_3_);}\n.bg-dark.transparent[data-v-332fccf4]{\n    background-color: transparent !important;\n}\n", ""]);
 
 // exports
 
@@ -87188,7 +87246,19 @@ var render = function() {
                                   "a",
                                   {
                                     staticClass: "nav-link msg-link",
-                                    attrs: { href: "" }
+                                    class:
+                                      "" +
+                                      (_vm.getNotifications.length
+                                        ? "notify"
+                                        : ""),
+                                    attrs: {
+                                      href: "",
+                                      "data-notify":
+                                        "" +
+                                        (_vm.getNotifications.length
+                                          ? "You have unread notifications"
+                                          : "")
+                                    }
                                   },
                                   [
                                     _c(
@@ -87220,9 +87290,21 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _c("span", {
-                                      attrs: { id: "notification-ball" }
-                                    })
+                                    _vm.getNotifications.length
+                                      ? _c(
+                                          "span",
+                                          {
+                                            attrs: { id: "notification-ball" }
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.getNotifications.length
+                                              )
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
                                   ]
                                 )
                               ]),
@@ -88433,121 +88515,120 @@ var render = function() {
       _c("h4", { staticClass: "ml-2" }, [_vm._v("CoursesDB")])
     ]),
     _vm._v(" "),
-    _c("ul", { staticClass: "list-unstyled components" }, [
-      _vm.getAuthUser
-        ? _c("div", { staticClass: "media" }, [
-            _c("img", {
-              staticClass: "side-avatar mr-3",
-              attrs: { src: _vm.getAuthUser.avatar, alt: "" }
+    _vm.getAuthUser
+      ? _c(
+          "ul",
+          { staticClass: "list-unstyled components" },
+          [
+            _c("div", { staticClass: "media" }, [
+              _c("img", {
+                staticClass: "side-avatar mr-3",
+                attrs: { src: _vm.getAuthUser.avatar, alt: "" }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "media-body align-self-center text-secondary" },
+                [
+                  _c("h5", { staticClass: "mt-0 mb-1 text-white" }, [
+                    _vm._v(_vm._s(_vm.getAuthUser.name))
+                  ]),
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.getAuthUser.is_admin ? "Admin" : "Student") +
+                      "\n            "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.menus, function(menu, index) {
+              return _c(
+                "li",
+                {
+                  key: index,
+                  class: "" + (_vm.$route.name === menu.name ? "active" : "")
+                },
+                [
+                  menu.name === "dashboard"
+                    ? [
+                        _c("router-link", { attrs: { to: "/" + menu.name } }, [
+                          _vm._v(_vm._s(menu.label))
+                        ])
+                      ]
+                    : menu.name !== "security" && _vm.getAuthUser.is_admin
+                    ? [
+                        _c("router-link", { attrs: { to: "/" + menu.name } }, [
+                          _vm._v(_vm._s(menu.label))
+                        ])
+                      ]
+                    : menu.name === "security" && _vm.getAuthUser.is_admin
+                    ? [
+                        _c(
+                          "li",
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-toggle",
+                                attrs: {
+                                  href: "#homeSubmenu",
+                                  "data-toggle": "collapse",
+                                  "aria-expanded": "false"
+                                }
+                              },
+                              [_vm._v(_vm._s(menu.label))]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(menu.submenus, function(submenu, index) {
+                              return _c(
+                                "ul",
+                                {
+                                  key: index,
+                                  staticClass: "collapse list-unstyled",
+                                  attrs: { id: "homeSubmenu" }
+                                },
+                                [
+                                  _c("li", [
+                                    _c("a", { attrs: { href: "#" } }, [
+                                      _vm._v(_vm._s(submenu.label))
+                                    ])
+                                  ])
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    : _vm._e()
+                ],
+                2
+              )
             }),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "media-body align-self-center text-secondary" },
-              [
-                _c("h5", { staticClass: "mt-0 mb-1 text-white" }, [
-                  _vm._v(_vm._s(_vm.getAuthUser.name))
-                ]),
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.getAuthUser.is_admin ? "Admin" : "Student") +
-                    "\n            "
-                )
-              ]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "li",
-        { class: "" + (this.$route.name === "dashboard" ? "active" : "") },
-        [
-          _c("router-link", { attrs: { to: { name: "dashboard" } } }, [
-            _vm._v("Dashboard")
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        { class: "" + (this.$route.name === "students" ? "active" : "") },
-        [
-          _c("router-link", { attrs: { to: { name: "students" } } }, [
-            _vm._v("Students")
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        { class: "" + (this.$route.name === "courses" ? "active" : "") },
-        [
-          _c("router-link", { attrs: { to: { name: "courses" } } }, [
-            _vm._v("Courses")
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("li", [
-        _c(
-          "a",
-          {
-            attrs: { href: "#" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.logout($event)
-              }
-            }
-          },
-          [_vm._v("Logout")]
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.logout($event)
+                    }
+                  }
+                },
+                [_vm._v("Logout")]
+              )
+            ])
+          ],
+          2
         )
-      ])
-    ])
+      : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-toggle",
-          attrs: {
-            href: "#homeSubmenu",
-            "data-toggle": "collapse",
-            "aria-expanded": "false"
-          }
-        },
-        [_vm._v("Security")]
-      ),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "collapse list-unstyled", attrs: { id: "homeSubmenu" } },
-        [
-          _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Roles")])]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Permissions")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Assignations")])
-          ])
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -105442,7 +105523,6 @@ _router__WEBPACK_IMPORTED_MODULE_0__["default"].beforeEach(function (to, from, n
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 Vue.component('app', __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue")["default"]);
 _store__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("fetchCurrentUser").then(function (response) {
-  console.log("Got some data, now lets show something in this component", response);
   var app = new Vue({
     el: '#app',
     router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -106562,6 +106642,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     students: [],
     courses: {},
     dashboard_stats: {},
+    notifications: [],
     student: {
       details: {},
       courses: [],
@@ -106583,6 +106664,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     getStudent: function getStudent(state) {
       return state.student;
+    },
+    getNotifications: function getNotifications(state) {
+      return state.notifications;
     }
   },
   mutations: {
@@ -106603,6 +106687,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     SET_SINGLE_STUDENT: function SET_SINGLE_STUDENT(state, student) {
       state.student = student;
+    },
+    SET_NOTOFICATION: function SET_NOTOFICATION(state, notifications) {
+      state.notifications = notifications;
     }
   },
   actions: {
@@ -106665,31 +106752,32 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
                 response = _context2.sent;
 
                 if (!(response.status === 200)) {
-                  _context2.next = 9;
+                  _context2.next = 10;
                   break;
                 }
 
-                _context2.next = 8;
+                console.log('noto', response);
+                _context2.next = 9;
                 return dispatch('setUserProfile', response.data);
 
-              case 8:
+              case 9:
                 return _context2.abrupt("return", response);
 
-              case 9:
-                _context2.next = 14;
+              case 10:
+                _context2.next = 15;
                 break;
 
-              case 11:
-                _context2.prev = 11;
+              case 12:
+                _context2.prev = 12;
                 _context2.t0 = _context2["catch"](1);
                 return _context2.abrupt("return", _context2.t0.response);
 
-              case 14:
+              case 15:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[1, 11]]);
+        }, _callee2, null, [[1, 12]]);
       }))();
     },
     signOut: function signOut(_ref3) {
@@ -106739,10 +106827,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
                 commit = _ref4.commit;
                 commit('SET_TOKEN', data.token);
                 commit('SET_USER', data.user);
+                commit('SET_NOTOFICATION', data.notifications);
                 localStorage.setItem('coursesDB.token', data.token);
                 localStorage.setItem('coursesDB.user', JSON.stringify(data.user));
 
-              case 5:
+              case 6:
               case "end":
                 return _context4.stop();
             }
@@ -106764,23 +106853,20 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
 
               case 4:
                 response = _context5.sent;
-                console.log('fetch_std', response.data);
-                commit('SET_SINGLE_STUDENT', response.data); // commit('SET_SINGLE_STUDENT', response.data.student)
-                // commit('SET_SINGLE_STUDENT_COURSES', response.data.courses)
-
+                commit('SET_SINGLE_STUDENT', response.data);
                 return _context5.abrupt("return", response);
 
-              case 10:
-                _context5.prev = 10;
+              case 9:
+                _context5.prev = 9;
                 _context5.t0 = _context5["catch"](1);
                 return _context5.abrupt("return", _context5.t0.response);
 
-              case 13:
+              case 12:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[1, 10]]);
+        }, _callee5, null, [[1, 9]]);
       }))();
     },
     fetchStudents: function fetchStudents(_ref6) {
@@ -106993,23 +107079,24 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
                 response = _context12.sent;
 
                 if (!(response.status === 200)) {
-                  _context12.next = 13;
+                  _context12.next = 14;
                   break;
                 }
 
                 // await dispatch('setUserProfile', response.data)
+                commit('SET_NOTOFICATION', response.data.notifications);
                 commit('SET_USER', response.data.user);
                 return _context12.abrupt("return", response);
 
-              case 13:
+              case 14:
                 console.log('Not 200');
 
-              case 14:
-                _context12.next = 23;
+              case 15:
+                _context12.next = 24;
                 break;
 
-              case 16:
-                _context12.prev = 16;
+              case 17:
+                _context12.prev = 17;
                 _context12.t0 = _context12["catch"](4);
                 console.log('I came to error');
                 commit('SET_TOKEN', null);
@@ -107017,12 +107104,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
                 localStorage.removeItem('coursesDB.token');
                 localStorage.removeItem('coursesDB.user');
 
-              case 23:
+              case 24:
               case "end":
                 return _context12.stop();
             }
           }
-        }, _callee12, null, [[4, 16]]);
+        }, _callee12, null, [[4, 17]]);
       }))();
     },
     fetchDashboardStats: function fetchDashboardStats(_ref13) {
@@ -107039,21 +107126,20 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
 
               case 4:
                 response = _context13.sent;
-                console.log('ppp', response.data);
                 commit('SET_DASHBOARD_STATS', response.data);
                 return _context13.abrupt("return", response);
 
-              case 10:
-                _context13.prev = 10;
+              case 9:
+                _context13.prev = 9;
                 _context13.t0 = _context13["catch"](1);
                 return _context13.abrupt("return", _context13.t0.response);
 
-              case 13:
+              case 12:
               case "end":
                 return _context13.stop();
             }
           }
-        }, _callee13, null, [[1, 10]]);
+        }, _callee13, null, [[1, 9]]);
       }))();
     }
   }

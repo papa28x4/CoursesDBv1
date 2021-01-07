@@ -58,8 +58,9 @@ export default {
             'fetchDashboardStats'
         ])
     },
-    created(){
-      this.fetchDashboardStats()
+    async created(){
+      await this.fetchDashboardStats()
+      console.log(this.getDashboardStats)
     }
 }
 </script>

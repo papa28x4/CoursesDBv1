@@ -34,6 +34,11 @@ class UserProfileController extends Controller
             }
         }
 
-        return response()->json(compact('user'));
+        $notifications = [];
+        foreach($user->unreadNotifications as $notification){
+            array_push($notifications, $notification);
+        }
+
+        return response()->json(compact('user', 'notifications'));
     }
 }

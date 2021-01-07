@@ -29,6 +29,10 @@ class LoginController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
         $user = Auth::user();
-        return response()->json(compact(['user','token']));
+        $notifications = [];
+        foreach($user->unreadNotifications as $notification){
+            array_push($notifications, $notification);
+        }
+        return response()->json(compact(['user','token', 'notifications']));
     }
 }

@@ -44,7 +44,7 @@ Vue.component('app', require('./components/App.vue').default);
 
 
 store.dispatch("fetchCurrentUser").then(response => {
-    console.log("Got some data, now lets show something in this component", response)
+
     const app = new Vue({
         el: '#app',
         router,

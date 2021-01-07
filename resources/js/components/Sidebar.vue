@@ -40,36 +40,34 @@
             <h4 class="ml-2">CoursesDB</h4>
         </div>
 
-        <ul class="list-unstyled components">
-            <div class="media" v-if="getAuthUser">
+        <ul v-if="getAuthUser" class="list-unstyled components">
+            <div class="media" >
                 <img class="side-avatar mr-3" :src="getAuthUser.avatar" alt="">
                 <div class="media-body align-self-center text-secondary">
                     <h5 class="mt-0 mb-1 text-white">{{getAuthUser.name}}</h5>
                     {{getAuthUser.is_admin ? 'Admin' : 'Student'}}
                 </div>
             </div>
-             <li :class="`${this.$route.name === 'dashboard' ? 'active': ''}`">
-                <router-link :to="{name: 'dashboard'}" >Dashboard</router-link>
-            </li>
-             <li :class="`${this.$route.name === 'students' ? 'active': ''}`">
-                <router-link :to="{name: 'students'}" >Students</router-link>
-            </li>
-             <li :class="`${this.$route.name === 'courses' ? 'active': ''}`">
-                <router-link :to="{name: 'courses'}" >Courses</router-link>
-            </li>
-            <li >
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Security</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+             
+            <li  v-for="(menu, index) in menus" :key="index" :class="`${$route.name === menu.name ? 'active': ''}`">
+                <template v-if="menu.name === 'dashboard'">
+                    <router-link :to="`/${menu.name}`" >{{menu.label}}</router-link>
+                </template>
+                <template v-else-if="menu.name !== 'security' && getAuthUser.is_admin">
+                    <router-link :to="`/${menu.name}`" >{{menu.label}}</router-link>
+                </template>
+                <template v-else-if="menu.name === 'security' && getAuthUser.is_admin">
+                    <!-- <li  v-for="(menu, index) in menus" :key="index" :class="`${$route.name === menu.name ? 'active': ''}`" > -->
+                        <!-- <router-link :to="`/${menu.name}`" >{{menu.label}}</router-link> -->
                     <li>
-                        <a href="#">Roles</a>
-                    </li>
-                    <li>
-                        <a href="#">Permissions</a>
-                    </li>
-                    <li>
-                        <a href="#">Assignations</a>
-                    </li>
-                </ul>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{menu.label}}</a>
+                        <ul v-for="(submenu, index) in menu.submenus" :key="index" class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">{{submenu.label}}</a>
+                            </li>
+                        </ul>
+                    </li>                            
+                </template>       
             </li>
             <li>
                  <a @click.prevent="logout" href="#">Logout</a>
@@ -85,6 +83,21 @@
 import { mapGetters } from 'vuex'
 export default {
    name: 'sidebar',
+   data(){
+       return{
+           menus: [
+               {name: 'dashboard', label: 'Dashboard'},
+               {name: 'students', label: 'Students'},
+               {name: 'courses', label: 'Courses'},
+               {name: 'security', label: 'Security', submenus: [
+                    {name: 'roles', label: 'Roles'},
+                    {name: 'permissions', label: 'Permissions'},
+                    {name: 'assignations', label: 'Assignations'}
+                  ]
+               }
+           ]
+       }
+   },
    computed: {
        ...mapGetters([
            'getAuthUser'
@@ -95,8 +108,8 @@ export default {
            this.$emit('logout')
        }
    },
-   mounted(){
-       
+   created(){
+       console.log('name', this.$route.name)
    }
 }
 </script>

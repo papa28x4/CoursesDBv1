@@ -6,7 +6,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\StudentSignedUp;
 
 class RegisterController extends Controller
 {
@@ -30,7 +32,8 @@ class RegisterController extends Controller
         ));
 
         $token = JWTAuth::fromUser($user);
-
+        $admins = User::where('is_admin', true)->get();
+        Notification::send($admins, new StudentSignedUp($request->name, $request->email));
         /* This gives the same result as above */
         // $input = $request->all();
         // $input['password'] = bcrypt($input['password']);

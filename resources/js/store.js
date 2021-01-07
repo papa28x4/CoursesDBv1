@@ -10,6 +10,7 @@ const store = new Vuex.Store({
         students: [],
         courses: {},
         dashboard_stats: {},
+        notifications: [],
         student : {
            details : {},
            courses: [],
@@ -31,6 +32,9 @@ const store = new Vuex.Store({
         },
         getStudent(state){
             return state.student
+        },
+        getNotifications(state){
+            return state.notifications
         }
     },
     mutations: {
@@ -52,6 +56,9 @@ const store = new Vuex.Store({
         SET_SINGLE_STUDENT(state, student){
             state.student = student
         },
+        SET_NOTOFICATION(state, notifications){
+            state.notifications = notifications
+        },
     },
     actions: {
         async registerUser({dispatch},formData){
@@ -70,15 +77,11 @@ const store = new Vuex.Store({
             try{
                 const response = await axios.post('/api/admin/login', formData)
                 if(response.status === 200){
+                    console.log('noto', response)
                     await dispatch('setUserProfile', response.data)
                     return response;
                 }
             }catch(e){
-                // if(e.response.status === 400){
-                //     for (let error in e.response.data.error){
-                //         console.log(e.response.data.error[error][0])
-                //     }
-                // }
                 return e.response
             }
         },
@@ -93,7 +96,6 @@ const store = new Vuex.Store({
                  localStorage.removeItem('coursesDB.user')
                  commit('SET_TOKEN', null)
                  commit('SET_USER', null)
-                
                  return response
             }catch(e){
                 return e.response
@@ -102,16 +104,14 @@ const store = new Vuex.Store({
         async setUserProfile({commit}, data){
             commit('SET_TOKEN', data.token)
             commit('SET_USER', data.user)
+            commit('SET_NOTOFICATION', data.notifications)
             localStorage.setItem('coursesDB.token', data.token)
             localStorage.setItem('coursesDB.user', JSON.stringify(data.user))
         },
         async fetchStudent({commit}, student_id){
             try{
                 const response = await axios.get(`/api/admin/students/${student_id}`)
-                console.log('fetch_std', response.data)
                 commit('SET_SINGLE_STUDENT', response.data)
-                // commit('SET_SINGLE_STUDENT', response.data.student)
-                // commit('SET_SINGLE_STUDENT_COURSES', response.data.courses)
                 return response
             }catch(e){
                 return e.response
@@ -187,6 +187,7 @@ const store = new Vuex.Store({
                 })
                 if(response.status === 200){
                     // await dispatch('setUserProfile', response.data)
+                    commit('SET_NOTOFICATION', response.data.notifications)
                     commit('SET_USER', response.data.user)
                     return response;
                 }else{
@@ -203,7 +204,6 @@ const store = new Vuex.Store({
         async fetchDashboardStats({commit}){
             try{
                 const response = await axios.get('/api/admin/dashboard')
-                console.log('ppp', response.data)
                 commit('SET_DASHBOARD_STATS', response.data)
                 return response
             }catch(e){
