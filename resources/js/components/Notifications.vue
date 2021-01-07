@@ -13,7 +13,7 @@
           
         <tr v-for="(notification, index) in getNotifications" :key="notification.id">
           <th scope="row">{{index + 1}}</th>
-          <td> New Student, <strong>{{notification.data.name}}</strong>, signed up with <strong>{{notification.data.email}}</strong> signed up</td>
+          <td> New Student, <strong>{{notification.data.name}}</strong>, signed up with <strong>{{notification.data.email}}</strong></td>
           <td>{{formatDate(notification.created_at)}}</td>
           <td>
               <router-link :to="{path: `/students/${notification.data.id}`}"><button class="btn btn-secondary">View</button></router-link>

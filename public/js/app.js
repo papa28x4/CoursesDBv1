@@ -88331,8 +88331,7 @@ var render = function() {
               _vm._v(" New Student, "),
               _c("strong", [_vm._v(_vm._s(notification.data.name))]),
               _vm._v(", signed up with "),
-              _c("strong", [_vm._v(_vm._s(notification.data.email))]),
-              _vm._v(" signed up")
+              _c("strong", [_vm._v(_vm._s(notification.data.email))])
             ]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(_vm.formatDate(notification.created_at)))]),
