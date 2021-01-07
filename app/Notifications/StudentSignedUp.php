@@ -16,10 +16,11 @@ class StudentSignedUp extends Notification
      *
      * @return void
      */
-    public function __construct($name, $email)
+    public function __construct($user)
     {
-        $this->name = $name;
-        $this->email = $email;
+        $this->student = $user->id;
+        $this->email = $user->email;
+        $this->name = $user->name;
     }
 
     /**
@@ -56,8 +57,9 @@ class StudentSignedUp extends Notification
     public function toArray($notifiable)
     {
         return [
-            'name' => $this->name,
-            'email' => $this->email
+            'id' => $this->student,
+            'email' => $this->email,
+            'name' => $this->name
         ];
     }
 }

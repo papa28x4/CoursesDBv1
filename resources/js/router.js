@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import Student from './components/Student';
 import Students from './components/Students';
 import Courses from './components/Courses';
+import Notifications from './components/Notifications.vue'
 import NotFound from './components/NotFound.vue'
 
 Vue.use(Router);
@@ -47,6 +48,12 @@ const routes = [
         component: Courses,
         name: 'courses',
         meta: { title: 'Courses' }
+    },
+    {
+        path: '/notifications',
+        component: Notifications,
+        name: 'notifications',
+        meta: { title: 'Notifications' }
     },
     {
         path: '/students/:id',

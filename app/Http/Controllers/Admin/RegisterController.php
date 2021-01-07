@@ -33,7 +33,7 @@ class RegisterController extends Controller
 
         $token = JWTAuth::fromUser($user);
         $admins = User::where('is_admin', true)->get();
-        Notification::send($admins, new StudentSignedUp($request->name, $request->email));
+        Notification::send($admins, new StudentSignedUp($user));
         /* This gives the same result as above */
         // $input = $request->all();
         // $input['password'] = bcrypt($input['password']);
